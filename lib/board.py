@@ -21,7 +21,7 @@ class Board:
         space = self.get_space(space_coords)
         if not space.value:
             eliminating_values = self.get_eliminating_values(space_coords)
-            space.eliminate_possibilities(eliminating_values)
+            space.eliminate_possibles(eliminating_values)
 
     def get_space(self, space_coords):
         return self.spaces[space_coords[0]][space_coords[1]]
