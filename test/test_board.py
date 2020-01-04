@@ -45,5 +45,19 @@ class BoardTest(unittest.TestCase):
         eliminating_values = [4,5,6,7]
         self.assertEquals(b.get_eliminating_values([1,3]), eliminating_values)
 
+    def test_attempt_to_guess_space(self):
+        b = Board()
+        b.fill_space([0,5],1)
+        b.fill_space([1,5],2)
+        b.fill_space([2,5],3)
+        b.fill_space([1,1],4)
+        b.fill_space([1,2],5)
+        b.fill_space([0,4],6)
+        b.fill_space([5,3],6)
+        b.fill_space([7,3],7)
+        b.fill_space([1,6],9)
+        b.attempt_to_guess_space([1,3])
+        self.assertEquals(b.get_space([1,3]).value, 8)
+
 if __name__ == "__main__":
     unittest.main()
