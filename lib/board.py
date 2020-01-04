@@ -1,5 +1,7 @@
 from space import Space
 class Board:
+    NUMBER_RANGE = range(9)
+
     def __init__(self, size = 9):
         self.size = size
         spaces = [0] * size
@@ -9,6 +11,16 @@ class Board:
                 row.append(Space())
             spaces[i] = row
         self.spaces = spaces
+
+    def attempt_to_guess_space(self, space):
+        spaces = self.spaces
+        if not spaces[space[0]][space[1]]:
+            eliminating_values = get_eliminating_values(space)
+            possible_values = list(set(self.NUMBER_RANGE) - set(eliminating_values))
+            if len(possible_values) == 1:
+                fill_space(space, possible_values[0])
+            else if len(possible_values) < 1:
+                raise CustomError("No possible values for " + str(space))
 
     def fill_space(self, space, value):
         spaces = self.spaces

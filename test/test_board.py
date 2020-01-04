@@ -39,7 +39,10 @@ class BoardTest(unittest.TestCase):
         b = Board()
         b.fill_space([1,2],5)
         b.fill_space([1,1],4)
-        eliminating_values = [4,5]
+        b.fill_space([0,4],6)
+        b.fill_space([5,3],6)
+        b.fill_space([7,3],7)
+        eliminating_values = [4,5,6,7]
         self.assertEquals(b.get_eliminating_values([1,3]), eliminating_values)
 
 if __name__ == "__main__":
