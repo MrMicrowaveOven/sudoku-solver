@@ -1,4 +1,6 @@
 from space import Space
+from time import sleep
+
 class Board:
     NUMBER_RANGE = range(1,10)
 
@@ -21,16 +23,63 @@ class Board:
                 space = _.get_space([i,j])
                 space.fill(value)
 
+    def is_solved(_):
+        solved = True
+        spaces = _.spaces
+        for row in spaces:
+            for space in row:
+                if not space.value:
+                    solved = False
+        return solved
+
 
     def attempt_to_solve(_):
-        return True
+        while not _.is_solved():
+        # for i in range(20):
+            _.show_board()
+            _.one_round_of_elimination()
+            sleep(2)
+            print '==========================================================='
+        _.show_board()
+
+
+    def one_round_of_elimination(_):
+        spaces = _.spaces
+        for i, row in enumerate(spaces):
+            for j, space in enumerate(row):
+                _.attempt_to_guess_space([i,j])
+        _.attempt_to_guess_space([2,1])
 
     def attempt_to_guess_space(_, space_coords):
+        _.run_count_elimination(space_coords)
+        _.run_area_elimination(space_coords)
+        _.get_space(space_coords).solve_check()
+
+    def run_count_elimination(_, space_coords):
         spaces = _.spaces
         space = _.get_space(space_coords)
         if not space.value:
             eliminating_values = _.get_eliminating_values(space_coords)
             space.eliminate_possibles(eliminating_values)
+
+    def run_area_elimination(_, space_coords):
+        space = _.get_space(space_coords)
+        possibles = space.possibles
+
+        _.run_elimination(space, _.get_hor_spaces(space_coords))
+        _.run_elimination(space, _.get_vert_spaces(space_coords))
+        _.run_elimination(space, _.get_block_spaces(space_coords))
+
+    def run_elimination(_, space, related_spaces_coords):
+        possibles_of_relatives = []
+        for related_space_coords in related_spaces_coords:
+            related_space = _.get_space(related_space_coords)
+            possibles_of_relatives += related_space.possibles
+
+        possibles_of_relatives = list(set(possibles_of_relatives))
+        unique_possibles = list(set(space.possibles) - set(possibles_of_relatives))
+        if len(unique_possibles) == 1:
+            space.fill(unique_possibles[0])
 
     def get_space(_, space_coords):
         return _.spaces[space_coords[0]][space_coords[1]]
@@ -42,7 +91,7 @@ class Board:
 
     def get_eliminating_values(_, space):
         spaces = _.spaces
-        eliminating_spaces = _.get_eliminating_spaces(space)
+        eliminating_spaces = _.get_related_spaces(space)
         eliminating_values = []
         for eliminating_space in eliminating_spaces:
             value = spaces[eliminating_space[0]][eliminating_space[1]].value
@@ -50,8 +99,13 @@ class Board:
                 eliminating_values.append(value)
         return list(set(eliminating_values))
 
-    def get_eliminating_spaces(_, space):
+
+    def get_related_spaces(_, space):
         return _.get_hor_spaces(space) + _.get_vert_spaces(space) + _.get_block_spaces(space)
+
+    def remove_own_space(_, spaces, space):
+        spaces.remove(space)
+        return spaces
 
     def get_block_spaces(_, space):
         size = _.size
@@ -61,6 +115,7 @@ class Board:
         for i in range(3):
             for j in range(3):
                 block_spaces.append([block_vert_index * 3 + i, block_hor_index * 3 + j])
+        block_spaces = _.remove_own_space(block_spaces, space)
         return block_spaces
 
     def get_vert_spaces(_, space):
@@ -69,6 +124,7 @@ class Board:
         column_index = space[1]
         for i in range(size):
             vert_spaces.append([i, column_index])
+        vert_spaces = _.remove_own_space(vert_spaces, space)
         return vert_spaces
 
     def get_hor_spaces(_, space):
@@ -77,6 +133,7 @@ class Board:
         row_index = space[0]
         for i in range(size):
             hor_spaces.append([row_index, i])
+        hor_spaces = _.remove_own_space(hor_spaces, space)
         return hor_spaces
 
     def show_board(_):

@@ -19,8 +19,12 @@ class Space:
 
     def solve_check(_):
         possibles = _.possibles
+        # if len(possibles) == 0:
+            # raise CustomError('No possibles')
         if len(possibles) == 1 and not _.value:
             _.value = possibles[0]
+        if _.value:
+            _.possibles = [_.value]
 
     def is_filled(_):
         return _.value != None
