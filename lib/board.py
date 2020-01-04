@@ -12,15 +12,16 @@ class Board:
             spaces[i] = row
         self.spaces = spaces
 
-    def attempt_to_guess_space(self, space):
+
+    def attempt_to_solve(self):
+        return True
+
+    def attempt_to_guess_space(self, space_coords):
         spaces = self.spaces
-        if not spaces[space[0]][space[1]].value:
-            eliminating_values = self.get_eliminating_values(space)
-            possible_values = list(set(self.NUMBER_RANGE) - set(eliminating_values))
-            if len(possible_values) == 1:
-                self.fill_space(space, possible_values[0])
-            elif len(possible_values) < 1:
-                raise CustomError("No possible values for " + str(space))
+        space = self.get_space(space_coords)
+        if not space.value:
+            eliminating_values = self.get_eliminating_values(space_coords)
+            space.eliminate_possibilities(eliminating_values)
 
     def get_space(self, space_coords):
         return self.spaces[space_coords[0]][space_coords[1]]
