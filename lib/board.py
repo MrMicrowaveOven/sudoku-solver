@@ -2,7 +2,8 @@ from space import Space
 class Board:
     NUMBER_RANGE = range(1,10)
 
-    def __init__(_, size = 9):
+    def __init__(_, prefill_array = None):
+        size = 9
         _.size = size
         spaces = [0] * size
         for i in range(size):
@@ -11,6 +12,14 @@ class Board:
                 row.append(Space())
             spaces[i] = row
         _.spaces = spaces
+        if prefill_array:
+            _.prefill_board(prefill_array)
+
+    def prefill_board(_, prefill_array):
+        for i, row_array in enumerate(prefill_array):
+            for j, value in enumerate(row_array):
+                space = _.get_space([i,j])
+                space.fill(value)
 
 
     def attempt_to_solve(_):
