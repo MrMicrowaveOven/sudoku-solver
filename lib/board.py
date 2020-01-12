@@ -39,7 +39,7 @@ class Board:
         # for i in range(20):
             _.show_board()
             _.one_round_of_elimination()
-            # sleep(1)
+            sleep(1)
             print '==========================================================='
         _.show_board()
 

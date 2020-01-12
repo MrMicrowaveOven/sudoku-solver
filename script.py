@@ -24,6 +24,6 @@ def parse_board(board):
     return Board(new_board_arr)
 
 with open('board.txt', 'r') as file:
-    board = file.read()
+    board_array = file.read()
 
-parse_board(board).attempt_to_solve()
+parse_board(board_array).attempt_to_solve()
