@@ -43,7 +43,6 @@ class Board:
             print '==========================================================='
         _.show_board()
 
-
     def one_round_of_elimination(_):
         one_solved = False
         spaces = _.spaces
@@ -58,7 +57,6 @@ class Board:
             if one_solved:
                 break
 
-
     def attempt_to_guess_space(_, space_coords):
         _.run_count_elimination(space_coords)
         _.run_area_elimination(space_coords)
@@ -66,7 +64,6 @@ class Board:
 
     # Eliminates numbers from this space's possibilities based on related spaces.
     def run_count_elimination(_, space_coords):
-        spaces = _.spaces
         space = _.get_space(space_coords)
         if not space.value:
             eliminating_values = _.get_eliminating_values(space_coords)
@@ -76,7 +73,6 @@ class Board:
     # option for a specific number.
     def run_area_elimination(_, space_coords):
         space = _.get_space(space_coords)
-        possibles = space.possibles
 
         _.run_elimination(space, _.get_hor_spaces(space_coords))
         _.run_elimination(space, _.get_vert_spaces(space_coords))
@@ -96,9 +92,8 @@ class Board:
     def get_space(_, space_coords):
         return _.spaces[space_coords[0]][space_coords[1]]
 
-    def fill_space(_, space, value):
-        spaces = _.spaces
-        space = spaces[space[0]][space[1]]
+    def fill_space(_, space_coords, value):
+        space = _.get_space(space_coords)
         space.fill(value)
 
     def get_eliminating_values(_, space):
@@ -119,33 +114,33 @@ class Board:
         spaces.remove(space)
         return spaces
 
-    def get_block_spaces(_, space):
+    def get_block_spaces(_, space_coords):
         size = _.size
         block_spaces = []
-        block_vert_index = space[0] / 3
-        block_hor_index = space[1] / 3
+        block_vert_index = space_coords[0] / 3
+        block_hor_index = space_coords[1] / 3
         for i in range(3):
             for j in range(3):
                 block_spaces.append([block_vert_index * 3 + i, block_hor_index * 3 + j])
-        block_spaces = _.remove_own_space(block_spaces, space)
+        block_spaces = _.remove_own_space(block_spaces, space_coords)
         return block_spaces
 
-    def get_vert_spaces(_, space):
+    def get_vert_spaces(_, space_coords):
         size = _.size
         vert_spaces = []
-        column_index = space[1]
+        column_index = space_coords[1]
         for i in range(size):
             vert_spaces.append([i, column_index])
-        vert_spaces = _.remove_own_space(vert_spaces, space)
+        vert_spaces = _.remove_own_space(vert_spaces, space_coords)
         return vert_spaces
 
-    def get_hor_spaces(_, space):
+    def get_hor_spaces(_, space_coords):
         size = _.size
         hor_spaces = []
-        row_index = space[0]
+        row_index = space_coords[0]
         for i in range(size):
             hor_spaces.append([row_index, i])
-        hor_spaces = _.remove_own_space(hor_spaces, space)
+        hor_spaces = _.remove_own_space(hor_spaces, space_coords)
         return hor_spaces
 
     def show_board(_):
