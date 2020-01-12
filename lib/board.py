@@ -48,7 +48,6 @@ class Board:
         for i, row in enumerate(spaces):
             for j, space in enumerate(row):
                 _.attempt_to_guess_space([i,j])
-        _.attempt_to_guess_space([2,1])
 
     def attempt_to_guess_space(_, space_coords):
         _.run_count_elimination(space_coords)
