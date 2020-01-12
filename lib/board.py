@@ -3,6 +3,7 @@ from time import sleep
 
 class Board:
     NUMBER_RANGE = range(1,10)
+    SOLVE_ONE_AT_A_TIME = True
 
     def __init__(_, prefill_array = None):
         size = 9
@@ -38,16 +39,25 @@ class Board:
         # for i in range(20):
             _.show_board()
             _.one_round_of_elimination()
-            sleep(1)
+            # sleep(1)
             print '==========================================================='
         _.show_board()
 
 
     def one_round_of_elimination(_):
+        one_solved = False
         spaces = _.spaces
         for i, row in enumerate(spaces):
             for j, space in enumerate(row):
-                _.attempt_to_guess_space([i,j])
+                space.solve_check()
+                if not space.value:
+                    _.attempt_to_guess_space([i,j])
+                    if _.SOLVE_ONE_AT_A_TIME and space.value:
+                        one_solved = True
+                        break
+            if one_solved:
+                break
+
 
     def attempt_to_guess_space(_, space_coords):
         _.run_count_elimination(space_coords)
