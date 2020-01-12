@@ -107,8 +107,11 @@ class Board:
         return list(set(eliminating_values))
 
 
-    def get_related_spaces(_, space):
-        return _.get_hor_spaces(space) + _.get_vert_spaces(space) + _.get_block_spaces(space)
+    def get_related_spaces(_, space_coords):
+        hor_spaces = _.get_hor_spaces(space_coords)
+        vert_spaces = _.get_vert_spaces(space_coords)
+        block_spaces = _.get_block_spaces(space_coords)
+        return hor_spaces + vert_spaces + block_spaces
 
     def remove_own_space(_, spaces, space):
         spaces.remove(space)
