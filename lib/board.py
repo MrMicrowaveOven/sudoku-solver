@@ -64,6 +64,7 @@ class Board:
         _.run_area_elimination(space_coords)
         _.get_space(space_coords).solve_check()
 
+    # Eliminates numbers from this space's possibilities based on related spaces.
     def run_count_elimination(_, space_coords):
         spaces = _.spaces
         space = _.get_space(space_coords)
@@ -71,6 +72,8 @@ class Board:
             eliminating_values = _.get_eliminating_values(space_coords)
             space.eliminate_possibles(eliminating_values)
 
+    # Checks row, column, and block to see if this space is the only possible
+    # option for a specific number.
     def run_area_elimination(_, space_coords):
         space = _.get_space(space_coords)
         possibles = space.possibles
