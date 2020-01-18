@@ -30,7 +30,10 @@ class Space:
         return _.value != None
 
     def fill(_, value):
-        _.value = value
+        if value:
+            _.value = int(value)
+        else:
+            _.value = None
 
     def empty(_):
         _.value = None
