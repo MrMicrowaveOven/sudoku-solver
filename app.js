@@ -69,7 +69,6 @@ function getMove() {
   var spaces = [];
   var row = [];
   $('.sudoku-space').each(function(id, space) {
-    // console.log(id)
     if (id % 9 == 0 && id > 0) {
       spaces.push(row)
       row = []

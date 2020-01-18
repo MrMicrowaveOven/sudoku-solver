@@ -4,6 +4,7 @@ from time import sleep
 class Board:
     NUMBER_RANGE = range(1,10)
     SOLVE_ONE_AT_A_TIME = True
+    SECONDS_BETWEEN_EACH_MOVE = .25
 
     def __init__(_, prefill_array = None):
         size = 9
@@ -38,7 +39,7 @@ class Board:
         while not _.is_solved():
             _.show_board()
             _.one_round_of_elimination()
-            sleep(.25)
+            sleep(_.SECONDS_BETWEEN_EACH_MOVE)
             print '==========================================================='
         _.show_board()
 
