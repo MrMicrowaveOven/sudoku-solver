@@ -17,10 +17,15 @@ def main_interface():
 @app.route('/one_move', methods=["POST"])
 def make_single_move():
     jsonified_request = request.get_json()
-    board = jsonified_request['board']
-    after_one_move = Board(board).make_one_move().to_arr()
-    # response = { board: after_one_move}
-    return jsonify(after_one_move)
+    old_board = jsonified_request['board']
+    new_board = Board(old_board)
+    move = new_board.make_one_move()
+    after_one_move = new_board.to_arr()
+
+    return jsonify({
+        'board': after_one_move,
+        'move': move
+    })
 
 @app.after_request
 def add_headers(response):

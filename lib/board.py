@@ -42,8 +42,7 @@ class Board:
         return solved
 
     def make_one_move(_):
-        _.one_round_of_elimination()
-        return _
+        return _.one_round_of_elimination()
 
     def attempt_to_solve(_):
         while not _.is_solved():
@@ -56,6 +55,7 @@ class Board:
     def one_round_of_elimination(_):
         one_solved = False
         spaces = _.spaces
+        move_made = None
         for i, row in enumerate(spaces):
             for j, space in enumerate(row):
                 space.solve_check()
@@ -63,9 +63,11 @@ class Board:
                     _.attempt_to_guess_space([i,j])
                     if _.SOLVE_ONE_AT_A_TIME and space.value:
                         one_solved = True
+                        move_made = {'space': [i,j]}
                         break
             if one_solved:
                 break
+        return move_made
 
     def attempt_to_guess_space(_, space_coords):
         _.run_count_elimination(space_coords)
