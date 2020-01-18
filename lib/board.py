@@ -19,6 +19,13 @@ class Board:
         if prefill_array:
             _.prefill_board(prefill_array)
 
+    def board_array(_):
+        spaces = _.spaces
+        board_arr = []
+        for row in spaces:
+            board_arr.append(map(lambda space: space.value, row))
+        return board_arr
+
     def prefill_board(_, prefill_array):
         for i, row_array in enumerate(prefill_array):
             for j, value in enumerate(row_array):
@@ -34,6 +41,8 @@ class Board:
                     solved = False
         return solved
 
+    def make_one_move(_):
+        _.one_round_of_elimination()
 
     def attempt_to_solve(_):
         while not _.is_solved():

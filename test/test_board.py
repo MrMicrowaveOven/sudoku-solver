@@ -7,23 +7,49 @@ from board import Board
 from space import Space
 
 class BoardTest(unittest.TestCase):
+    def test_board_array(_):
+        b = Board()
+        b.fill_space([1,2], 4)
+        b.fill_space([1,3], 5)
+        board_arr = b.board_array()
+        correct_board_array = [
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, 4, 5, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None, None, None]
+        ]
+        _.assertEquals(board_arr, correct_board_array)
+
     def test_get_vert_spaces(_):
-        b = Board(4)
+        b = Board()
         vert_spaces = [
             [0,2],
-            [1,2],
             [2,2],
-            [3,2]
+            [3,2],
+            [4,2],
+            [5,2],
+            [6,2],
+            [7,2],
+            [8,2],
         ]
         _.assertEquals(b.get_vert_spaces([1,2]), vert_spaces)
 
     def test_get_hor_spaces(_):
-        b = Board(4)
+        b = Board()
         hor_spaces = [
             [1,0],
             [1,1],
-            [1,2],
             [1,3],
+            [1,4],
+            [1,5],
+            [1,6],
+            [1,7],
+            [1,8],
         ]
         _.assertEquals(b.get_hor_spaces([1,2]), hor_spaces)
 
@@ -31,7 +57,7 @@ class BoardTest(unittest.TestCase):
         b = Board()
         block_spaces = [
             [0,6],[0,7],[0,8],
-            [1,6],[1,7],[1,8],
+            [1,6],[1,8],
             [2,6],[2,7],[2,8]
         ]
         _.assertEquals(b.get_block_spaces([1,7]), block_spaces)
