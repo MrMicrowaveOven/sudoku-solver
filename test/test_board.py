@@ -7,11 +7,11 @@ from board import Board
 from space import Space
 
 class BoardTest(unittest.TestCase):
-    def test_board_array(_):
+    def test_to_arr(_):
         b = Board()
         b.fill_space([1,2], 4)
         b.fill_space([1,3], 5)
-        board_arr = b.board_array()
+        board_arr = b.to_arr()
         correct_board_array = [
             [None, None, None, None, None, None, None, None, None],
             [None, None, 4, 5, None, None, None, None, None],

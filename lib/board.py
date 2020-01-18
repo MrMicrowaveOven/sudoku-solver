@@ -19,7 +19,7 @@ class Board:
         if prefill_array:
             _.prefill_board(prefill_array)
 
-    def board_array(_):
+    def to_arr(_):
         spaces = _.spaces
         board_arr = []
         for row in spaces:
