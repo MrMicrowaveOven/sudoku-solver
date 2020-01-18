@@ -82,7 +82,7 @@ function getMove() {
   })
   spaces.push(row)
   $.ajax({
-      url: "http://localhost:5000",
+      url: "http://localhost:5000/one_move",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({"board": spaces})

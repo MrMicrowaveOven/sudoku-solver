@@ -43,6 +43,7 @@ class Board:
 
     def make_one_move(_):
         _.one_round_of_elimination()
+        return _
 
     def attempt_to_solve(_):
         while not _.is_solved():
