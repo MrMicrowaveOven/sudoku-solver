@@ -22,16 +22,72 @@ $('.sudoku-space').each(function(i, el) {
   if (isGray) {
     $(this).addClass('gray')
   }
-
 })
 
+$('#space01').val(9)
+$('#space02').val(5)
+$('#space03').val(1)
+$('#space07').val(8)
+
+$('#space10').val(1)
+$('#space12').val(7)
+$('#space13').val(9)
+$('#space14').val(8)
+$('#space16').val(4)
+$('#space17').val(5)
+$('#space18').val(2)
+
+$('#space21').val(8)
+$('#space26').val(9)
+$('#space27').val(6)
+
+$('#space33').val(8)
+$('#space34').val(4)
+$('#space35').val(2)
+$('#space37').val(9)
+
+$('#space44').val(9)
+$('#space45').val(5)
+$('#space46').val(6)
+$('#space48').val(4)
+
+$('#space50').val(5)
+$('#space55').val(7)
+
+$('#space61').val(6)
+$('#space66').val(5)
+
+$('#space72').val(1)
+$('#space76').val(2)
+$('#space78').val(9)
+
+$('#space80').val(7)
 
 
-$.ajax({
+
+function getMove() {
+  var spaces = [];
+  var row = [];
+  $('.sudoku-space').each(function(id, space) {
+    // console.log(id)
+    if (id % 9 == 0 && id > 0) {
+      spaces.push(row)
+      row = []
+    }
+    if (space.value == '') {
+      row.push(null)
+    } else {
+      row.push(parseInt(space.value))
+    }
+
+  })
+  spaces.push(row)
+  $.ajax({
       url: "http://localhost:5000",
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({"message": 'message'})
-  }).done(function(data) {
+      data: JSON.stringify({"board": spaces})
+    }).done(function(data) {
       console.log(data);
   });
+}

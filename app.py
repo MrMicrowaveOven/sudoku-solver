@@ -1,11 +1,18 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+import sys
+sys.path.append("lib")
+
+from board import Board
+from script import parse_board
+
 @app.route('/', methods=["POST"])
 
 def main_interface():
     response = request.get_json()
-    print(response)
+    board = response['board']
+    Board(board).attempt_to_solve()
     return jsonify(response)
 
 @app.after_request

@@ -36,10 +36,9 @@ class Board:
 
     def attempt_to_solve(_):
         while not _.is_solved():
-        # for i in range(20):
             _.show_board()
             _.one_round_of_elimination()
-            sleep(1)
+            sleep(.25)
             print '==========================================================='
         _.show_board()
 
