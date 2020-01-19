@@ -98,4 +98,6 @@ function placeMove(data) {
   newValue = board[move[0]][move[1]]
   moveString = move.join('')
   $('#space' + moveString).val(newValue)
+  $('.sudoku-space').removeClass('font-red')
+  $('#space' + moveString).addClass('font-red')
 }

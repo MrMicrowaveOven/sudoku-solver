@@ -2,6 +2,10 @@
   background-color: lightgray;
 }
 
+.font-red {
+  color: red;
+}
+
 .sudoku-grid {
   text-align: center;
 }
