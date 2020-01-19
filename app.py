@@ -9,10 +9,11 @@ from script import parse_board
 
 @app.route('/', methods=["POST", "GET"])
 def main_interface():
-    response = request.get_json()
-    board = response['board']
-    Board(board).attempt_to_solve()
-    return jsonify(response)
+    if request.method=='POST':
+        response = request.get_json()
+        board = response['board']
+        Board(board).attempt_to_solve()
+        return jsonify(response)
 
 @app.route('/one_move', methods=["POST"])
 def make_single_move():
