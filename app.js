@@ -66,6 +66,7 @@ $('#space80').val(7)
 
 
 function getMove() {
+  $(".sudoku-space").prop('disabled', false);
   var spaces = [];
   var row = [];
   $('.sudoku-space').each(function(id, space) {
@@ -87,6 +88,14 @@ function getMove() {
       contentType: "application/json",
       data: JSON.stringify({"board": spaces})
     }).done(function(data) {
-      console.log(data);
+      placeMove(data)
   });
+}
+
+function placeMove(data) {
+  move = data.move.space
+  board = data.board
+  newValue = board[move[0]][move[1]]
+  moveString = move.join('')
+  $('#space' + moveString).val(newValue)
 }
