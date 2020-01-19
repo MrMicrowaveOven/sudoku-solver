@@ -115,7 +115,7 @@ function placeMove(data) {
 
 function displayError(invalidCoords) {
   $('.sudoku-space').removeClass('font-red font-blue')
-  $('.error-message').text('This is an invalid board.')
+  $('.error-message').removeClass('invisible')
   invalidCoords.forEach(function(invalidCoord) {
     invalidCoordString = invalidCoord.join('')
     $('#space' + invalidCoordString).addClass('font-red')
