@@ -38,9 +38,6 @@ My solution algorithm does each of these over and over again until the puzzle is
 
 # To Dos
 
-1. When a board changes and 'Go!' is pressed:
-  * Remove the 'invalid board' error message.
-  * Make all numbers the standard black.
-2. Add a "Solve" button in case the user doesn't want to click many times.
+1. Add a "Solve" button in case the user doesn't want to click many times.
 3. Show an "I can't solve that board" if my algorithm cannot solve.
 4. Add a "guess" functionality to the backend so that more boards can be solved.
