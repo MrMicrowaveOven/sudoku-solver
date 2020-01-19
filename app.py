@@ -7,7 +7,7 @@ sys.path.append("lib")
 from board import Board
 from script import parse_board
 
-@app.route('/', methods=["POST"])
+@app.route('/', methods=["POST", "GET"])
 def main_interface():
     response = request.get_json()
     board = response['board']
