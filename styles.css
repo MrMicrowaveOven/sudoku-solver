@@ -6,6 +6,10 @@
   color: red;
 }
 
+.font-blue {
+  color: blue;
+}
+
 .sudoku-grid {
   text-align: center;
 }
@@ -30,6 +34,10 @@
   text-align: center;
 }
 
-h2 {
+.error-message {
+  color: red;
+}
+
+h1, h2, h3 {
   text-align: center;
 }

@@ -7,6 +7,57 @@ from board import Board
 from space import Space
 
 class BoardTest(unittest.TestCase):
+    def test_is_invalid_with_row(_):
+        b = Board()
+        assert not b.is_invalid()
+        b.fill_space([0,0], 1)
+        b.fill_space([0,1], 2)
+        b.fill_space([0,2], 3)
+        b.fill_space([0,3], 4)
+        b.fill_space([0,4], 5)
+        b.fill_space([0,5], 6)
+        b.fill_space([0,6], 7)
+        b.fill_space([0,7], 8)
+        b.fill_space([0,8], 9)
+
+        assert not b.is_invalid()
+        b.fill_space([0,1], 1)
+        assert b.is_invalid()
+
+    def test_is_invalid_with_column(_):
+        b = Board()
+        assert not b.is_invalid()
+        b.fill_space([0,0], 1)
+        b.fill_space([1,0], 2)
+        b.fill_space([2,0], 3)
+        b.fill_space([3,0], 4)
+        b.fill_space([4,0], 5)
+        b.fill_space([5,0], 6)
+        b.fill_space([6,0], 7)
+        b.fill_space([7,0], 8)
+        b.fill_space([8,0], 9)
+
+        assert not b.is_invalid()
+        b.fill_space([1,0], 1)
+        assert b.is_invalid()
+
+    def test_is_invalid_with_block(_):
+        b = Board()
+        assert not b.is_invalid()
+        b.fill_space([0,0], 1)
+        b.fill_space([0,1], 2)
+        b.fill_space([0,2], 3)
+        b.fill_space([1,0], 4)
+        b.fill_space([1,1], 5)
+        b.fill_space([1,2], 6)
+        b.fill_space([2,0], 7)
+        b.fill_space([2,1], 8)
+        b.fill_space([2,2], 9)
+
+        assert not b.is_invalid()
+        b.fill_space([0,1], 1)
+        assert b.is_invalid()
+
     def test_to_arr(_):
         b = Board()
         b.fill_space([1,2], 4)

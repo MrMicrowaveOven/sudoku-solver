@@ -52,6 +52,30 @@ class Board:
             print '==========================================================='
         _.show_board()
 
+    def is_invalid(_):
+        spaces = _.spaces
+        for i, row in enumerate(spaces):
+            for j, space in enumerate(row):
+                if space.value:
+                    space_invalid = _.check_space_invalidity([i,j])
+                    if space_invalid:
+                        return space_invalid
+        return False
+
+    def check_space_invalidity(_, space_coords):
+        space = _.get_space(space_coords)
+        space_value = space.value
+        hor_spaces = _.get_hor_spaces(space_coords)
+        vert_spaces = _.get_vert_spaces(space_coords)
+        block_spaces = _.get_block_spaces(space_coords)
+        related_spaces = hor_spaces + vert_spaces + block_spaces
+        for related_space_coords in related_spaces:
+            related_space = _.get_space(related_space_coords)
+            related_space_value = related_space.value
+            if space_value == related_space_value:
+                return [space_coords, related_space_coords]
+        return False
+
     def one_round_of_elimination(_):
         one_solved = False
         spaces = _.spaces

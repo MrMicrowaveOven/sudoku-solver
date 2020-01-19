@@ -100,11 +100,24 @@ function getMove() {
 }
 
 function placeMove(data) {
-  move = data.move.space
-  board = data.board
-  newValue = board[move[0]][move[1]]
-  moveString = move.join('')
-  $('#space' + moveString).val(newValue)
-  $('.sudoku-space').removeClass('font-red')
-  $('#space' + moveString).addClass('font-red')
+  if (data.invalid) {
+    displayError(data.invalid)
+  } else {
+    move = data.move.space
+    board = data.board
+    newValue = board[move[0]][move[1]]
+    moveString = move.join('')
+    $('#space' + moveString).val(newValue)
+    $('.sudoku-space').removeClass('font-red font-blue')
+    $('#space' + moveString).addClass('font-blue')
+  }
+}
+
+function displayError(invalidCoords) {
+  $('.sudoku-space').removeClass('font-red font-blue')
+  $('.error-message').text('This is an invalid board.')
+  invalidCoords.forEach(function(invalidCoord) {
+    invalidCoordString = invalidCoord.join('')
+    $('#space' + invalidCoordString).addClass('font-red')
+  })
 }

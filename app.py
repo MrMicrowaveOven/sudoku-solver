@@ -16,16 +16,20 @@ def main_interface():
 
 @app.route('/one_move', methods=["POST"])
 def make_single_move():
+    json_response = {}
     jsonified_request = request.get_json()
     old_board = jsonified_request['board']
     new_board = Board(old_board)
-    move = new_board.make_one_move()
-    after_one_move = new_board.to_arr()
 
-    return jsonify({
-        'board': after_one_move,
-        'move': move
-    })
+    invalid_board = new_board.is_invalid()
+    if invalid_board:
+        json_response['invalid'] = invalid_board
+    else:
+        move = new_board.make_one_move()
+        after_one_move = new_board.to_arr()
+        json_response['board'] = after_one_move
+        json_response['move'] = move
+    return jsonify(json_response)
 
 @app.after_request
 def add_headers(response):
