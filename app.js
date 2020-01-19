@@ -24,44 +24,51 @@ $('.sudoku-space').each(function(i, el) {
   }
 })
 
-$('#space01').val(9)
-$('#space02').val(5)
-$('#space03').val(1)
-$('#space07').val(8)
+function clearBoard() {
+  $('.sudoku-space').val('')
+}
 
-$('#space10').val(1)
-$('#space12').val(7)
-$('#space13').val(9)
-$('#space14').val(8)
-$('#space16').val(4)
-$('#space17').val(5)
-$('#space18').val(2)
+function fillWithSample() {
+  $('#space01').val(9)
+  $('#space02').val(5)
+  $('#space03').val(1)
+  $('#space07').val(8)
 
-$('#space21').val(8)
-$('#space26').val(9)
-$('#space27').val(6)
+  $('#space10').val(1)
+  $('#space12').val(7)
+  $('#space13').val(9)
+  $('#space14').val(8)
+  $('#space16').val(4)
+  $('#space17').val(5)
+  $('#space18').val(2)
 
-$('#space33').val(8)
-$('#space34').val(4)
-$('#space35').val(2)
-$('#space37').val(9)
+  $('#space21').val(8)
+  $('#space26').val(9)
+  $('#space27').val(6)
 
-$('#space44').val(9)
-$('#space45').val(5)
-$('#space46').val(6)
-$('#space48').val(4)
+  $('#space33').val(8)
+  $('#space34').val(4)
+  $('#space35').val(2)
+  $('#space37').val(9)
 
-$('#space50').val(5)
-$('#space55').val(7)
+  $('#space44').val(9)
+  $('#space45').val(5)
+  $('#space46').val(6)
+  $('#space48').val(4)
 
-$('#space61').val(6)
-$('#space66').val(5)
+  $('#space50').val(5)
+  $('#space55').val(7)
 
-$('#space72').val(1)
-$('#space76').val(2)
-$('#space78').val(9)
+  $('#space61').val(6)
+  $('#space66').val(5)
 
-$('#space80').val(7)
+  $('#space72').val(1)
+  $('#space76').val(2)
+  $('#space78').val(9)
+
+  $('#space80').val(7)
+}
+
 
 
 
