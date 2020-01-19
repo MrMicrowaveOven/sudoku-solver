@@ -10,7 +10,7 @@ from script import parse_board
 @app.route('/', methods=["POST", "GET"])
 def main_interface():
     if request.method == 'GET':
-        return render_template("index.html", title = 'Index')
+        return render_template("index.html", title = 'Index', name = 'Hello world')
     elif request.method=='POST':
         response = request.get_json()
         board = response['board']
