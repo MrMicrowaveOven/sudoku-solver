@@ -99,6 +99,11 @@ function getMove() {
   });
 }
 
+function clearChanges() {
+  $('.sudoku-space').removeClass('font-red font-blue')
+  $('.error-message').addClass('invisible')
+}
+
 function placeMove(data) {
   if (data.invalid) {
     displayError(data.invalid)
@@ -107,14 +112,14 @@ function placeMove(data) {
     board = data.board
     newValue = board[move[0]][move[1]]
     moveString = move.join('')
+    clearChanges()
     $('#space' + moveString).val(newValue)
-    $('.sudoku-space').removeClass('font-red font-blue')
     $('#space' + moveString).addClass('font-blue')
   }
 }
 
 function displayError(invalidCoords) {
-  $('.sudoku-space').removeClass('font-red font-blue')
+  clearChanges()
   $('.error-message').removeClass('invisible')
   invalidCoords.forEach(function(invalidCoord) {
     invalidCoordString = invalidCoord.join('')
