@@ -35,3 +35,12 @@ For example, if there are 5 empty spaces in a block, but four of them can't be 5
 ## 4. Rinse and Repeat
 
 My solution algorithm does each of these over and over again until the puzzle is solved.  I haven't found a Sudoku that can't be solved by this yet.  Let me know if you do!
+
+# To Dos
+
+1. When a board changes and 'Go!' is pressed:
+  * Remove the 'invalid board' error message.
+  * Make all numbers the standard black.
+2. Add a "Solve" button in case the user doesn't want to click many times.
+3. Show an "I can't solve that board" if my algorithm cannot solve.
+4. Add a "guess" functionality to the backend so that more boards can be solved.
