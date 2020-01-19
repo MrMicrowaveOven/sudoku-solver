@@ -9,7 +9,10 @@ from script import parse_board
 
 @app.route('/', methods=["POST", "GET"])
 def main_interface():
-    if request.method=='POST':
+    if request.method == 'GET':
+        content = get_file('index.html')
+        return Response(content, mimetype="text/html")
+    elif request.method=='POST':
         response = request.get_json()
         board = response['board']
         Board(board).attempt_to_solve()
