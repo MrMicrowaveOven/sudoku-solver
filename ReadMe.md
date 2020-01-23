@@ -38,6 +38,7 @@ My solution algorithm does each of these over and over again until the puzzle is
 
 # To Dos
 
+1. Kill an endless loop if nothing can happen.
 1. Do something cute when it's solved.
 2. Add a "Solve" button in case the user doesn't want to click many times.
 3. Show an "I can't solve that board" if my algorithm cannot solve.
