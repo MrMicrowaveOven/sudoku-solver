@@ -2,15 +2,11 @@
 
 Update: I made an HTML interface!  Click [here](https://sudoku-hint.herokuapp.com/) to check it out!
 
-Got a Sudoku puzzle that you just can't figure out?  Simply enter it into an Excel document (I use Google Drive)(use ' ' for empty cells, or else it won't copy them), copy the 9x9 grid, and paste it into `board.txt`.  Run `python script.py` and I'll take care of the rest.
-
-If you'd rather enter it into the graphical text document of `board_old.txt` (looks sorta snazzy, if I do say so myself), run `python old_script.py` instead.
-
-The parsing can be a bit picky, and I'm slowly working to make it more adaptable.  However, that is one of the least fun parts of this project.  PLEASE let me know if you encounter any parsing errors when you input your sheet.
+Got a Sudoku puzzle that you just can't figure out?  Simply enter it into the interface and I'll take care of the rest.
 
 # My Strategy
 
-I'm certain there are better algorithms out there, but being a Sudoku fan myself I wanted to algorithmize the strategy I use when solving the paper version.  It's such an odd feeling teaching a computer how to do something that I've never put into words before.
+I'm certain there are better algorithms out there, but being a Sudoku fan myself I wanted to algorithmize the strategy I use when solving the paper version.  It's such an odd feeling teaching a computer how to do something that I've never put into words before.  Here are the four steps that I use:
 
 ## 1. Set Possibles
 
@@ -41,7 +37,5 @@ My solution algorithm does each of these over and over again until the puzzle is
 # To Dos
 
 1. Kill an endless loop if nothing can happen.
-1. Do something cute when it's solved.
-2. Add a "Solve" button in case the user doesn't want to click many times.
-3. Show an "I can't solve that board" if my algorithm cannot solve.
-4. Add a "guess" functionality to the backend so that more boards can be solved.
+2. Do something cute when it's solved.
+3. Add a "guess" functionality to the backend so that boards can be solved regardless of strategy.
