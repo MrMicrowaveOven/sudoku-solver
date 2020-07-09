@@ -1,5 +1,7 @@
 # Sudoku Solver
 
+Update: I made an HTML interface!  Click [here](https://sudoku-hint.herokuapp.com/) to check it out!
+
 Got a Sudoku puzzle that you just can't figure out?  Simply enter it into an Excel document (I use Google Drive)(use ' ' for empty cells, or else it won't copy them), copy the 9x9 grid, and paste it into `board.txt`.  Run `python script.py` and I'll take care of the rest.
 
 If you'd rather enter it into the graphical text document of `board_old.txt` (looks sorta snazzy, if I do say so myself), run `python old_script.py` instead.
