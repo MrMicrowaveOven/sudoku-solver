@@ -49,7 +49,7 @@ class Board:
             _.show_board()
             _.one_round_of_elimination()
             sleep(_.SECONDS_BETWEEN_EACH_MOVE)
-            print '==========================================================='
+            print('===========================================================')
         _.show_board()
 
     def is_invalid(_):
@@ -89,7 +89,7 @@ class Board:
                         if _.SOLVE_ONE_AT_A_TIME and space.value:
                             one_solved = True
                             move_made = {'space': [i,j]}
-                            print move_made
+                            print(move_made)
                             break
                 if one_solved:
                     break
@@ -187,8 +187,8 @@ class Board:
     def show_board(_):
         spaces = _.spaces
         size = _.size
-        print '  0 1 2 3 4 5 6 7 8'
-        print ' ' + '-' * (size * 2 + 1)
+        print('  0 1 2 3 4 5 6 7 8')
+        print(' ' + '-' * (size * 2 + 1))
         for i, row in enumerate(spaces):
             row_string = str(i) + '|'
             for j, space in enumerate(row):
@@ -200,6 +200,6 @@ class Board:
                     row_string += '|'
                 else:
                     row_string += ' '
-            print row_string
+            print(row_string)
             if i % 3 == 2:
-                print ' ' + '-' * (size * 2 + 1)
+                print(' ' + '-' * (size * 2 + 1))

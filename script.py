@@ -21,7 +21,7 @@ def parse_board(board):
         while len(row_array) < 9:
             row_array.append(None)
         new_board_arr.append(row_array)
-    print new_board_arr
+    print(new_board_arr)
     return Board(new_board_arr)
 
 with open('board.txt', 'r') as file:
